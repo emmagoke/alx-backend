@@ -9,6 +9,9 @@ app = Flask(__name__)
 
 
 class Config(object):
+    """
+    This class is used for the configuration of the flask app
+    """
 
     LANGUAGES = ["en", "fr"]
     BABEL_DEFAULT_LOCALE = 'en'
