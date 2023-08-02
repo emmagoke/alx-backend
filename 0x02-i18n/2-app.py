@@ -3,10 +3,8 @@
 This is a flask app that impliments simple Internationalization
 """
 from flask import Flask, render_template, request
-from flask_babel import Babel
+from flask_babel import Babel  # type: ignore
 
-
-app = Flask(__name__)
 
 class Config(object):
     """
@@ -16,6 +14,7 @@ class Config(object):
     LANGUAGES = ['en', 'fr']
     BABEL_DEFAULT_LOCALE = 'en'
     BABEL_DEFAULT_TIMEZONE = 'UTC'
+
 
 
 app.config.from_object(Config)
