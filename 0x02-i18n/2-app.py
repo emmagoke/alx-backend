@@ -22,7 +22,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@babel.localeselector   # Accept-Languages is an Http request header
+@babel.localeselector
 def get_locale():
     """
     This function determine the best match with local supported languages.
