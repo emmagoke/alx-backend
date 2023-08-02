@@ -30,7 +30,7 @@ def get_locale():
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
-@app.route('/', strict_slashes=False)
+@app.route('/', )
 def home():
     """ This is the home route. """
     return render_template('2-index.html')
