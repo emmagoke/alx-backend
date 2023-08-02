@@ -28,14 +28,21 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-@app.before_request
 def get_user():
     """ This function get the login in user. """
     user = request.args.get('login_as')
     if user:
         if int(user) in users:
             user_detail = users.get(int(user))
-            g.user = user_detail
+            return user_detail
+    else:
+        return None
+
+
+@app.before_request
+def before_request():
+    if get_user():
+        g.user = get_user
     else:
         g.user = None
 
