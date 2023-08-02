@@ -22,8 +22,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-# Accept-Languages is an Http request header
-@babel.localeselector
+@babel.localeselector   # Accept-Languages is an Http request header
 def get_locale():
     """
     This function determine the best match with local supported languages.
@@ -33,7 +32,7 @@ def get_locale():
 
 @app.route('/', strict_slashes=False)
 def home():
-    """ The home route. """
+    """ This is the home route. """
     return render_template('2-index.html')
 
 
