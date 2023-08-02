@@ -23,7 +23,7 @@ babel = Babel(app)
 
 
 @babel.localeselector
-def get_locale():
+def get_locale() -> str:
     """
     This function determine the best match with local supported languages.
     """
@@ -31,7 +31,7 @@ def get_locale():
 
 
 @app.route('/', )
-def home():
+def home() -> str:
     """ This is the home route. """
     return render_template('2-index.html')
 
