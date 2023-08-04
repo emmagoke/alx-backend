@@ -51,10 +51,18 @@ def get_locale() -> str:
     """
     This function determine the best match with local supported languages.
     """
-    query = request.args.get('locale')
-    if query:
-        if query in app.config['LANGUAGES']:
-            return query
+    #  Locale from URL parameters
+    query = request.args.get('locale', '')
+    if query in app.config['LANGUAGES']:
+        return query
+    #  Locale from user settings
+    if g.user and g.user['locale'] in app.config['LANGUAGES']:
+        return g.user['locale']
+    #  Locale from request header
+    header_query = request.headers.get('locale', '')
+    if header_query in app.config['LANGUAGES']:
+        return header_query
+    #  Default locale
     return request.accept_languages.best_match(app.config['LANGUAGES'])
 
 
