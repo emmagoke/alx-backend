@@ -28,7 +28,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-def get_user():
+def get_user() -> Union[Dict, None]:
     """ This function get the login in user. """
     user = request.args.get('login_as')
     if user:
@@ -40,7 +40,7 @@ def get_user():
 
 
 @app.before_request
-def before_request():
+def before_request() -> None:
     """ This accepts request before any function. """
     if get_user():
         g.user = get_user

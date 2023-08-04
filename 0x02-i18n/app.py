@@ -5,7 +5,7 @@ This is a flask app that handles search query
 import pytz
 from typing import Union, Dict
 from flask import Flask, render_template, request, g
-from flask_babel import Babel
+from flask_babel import Babel, format_datetime
 
 users = {
     1: {"name": "Balou", "locale": "fr", "timezone": "Europe/Paris"},
@@ -30,7 +30,7 @@ app.config.from_object(Config)
 babel = Babel(app)
 
 
-def get_user() -> Union[Dict, None]:
+def get_user():
     """ This function get the login in user. """
     user = request.args.get('login_as')
     if user:
@@ -83,7 +83,8 @@ def get_timezone() -> str:
 @app.route('/')
 def home() -> str:
     """ This is the home route.  """
-    return render_template('5-index.html')
+    g.time = format_datetime()
+    return render_template('index.html')
 
 
 if __name__ == '__main__':
