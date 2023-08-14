@@ -29,7 +29,7 @@ class FIFOCache(BaseCaching):
             print("DISCARD: {}".format(self.items.pop()))
 
     def get(self, key):
-        """ """
+        """ This method return the value of a key in a dictionary """
         if key:
             value = self.cache_data.get(key)
             if value:
