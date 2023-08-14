@@ -12,8 +12,8 @@ class FIFOCache(BaseCaching):
 
     def __init__(self):
         """ The constructor for the FIFOCache Class. """
-        self.items = []
-        super().__init__()
+        self.items = []  # or  user super().__init__()
+        super().__init__()  # and self.cache_data=OrderedDict()
 
     def put(self, key, item):
         """ This method assigns key and value to the dictionary. """
