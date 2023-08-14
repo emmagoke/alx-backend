@@ -14,8 +14,11 @@ class BasicCache(BaseCaching):
         """
         This method assigns key and value to the dictionary
         """
-        if key or item:
-            self.cache_data[key] = item
+        if key is None:
+            return
+        if item is None:
+            return
+        self.cache_data[key] = item
 
     def get(self, key):
         """
