@@ -10,6 +10,8 @@ function sendNotification(phoneNumber, message, job, done) {
   //   every 1 second check
   let interval = setInterval(() => {
     if (total - pending <= total / 2) {
+      // job.progress(completed, total [, data]):
+      // job.progress(frames, totalFrames);
       job.progress(total - pending, total);
     }
     if (blackList.includes(phoneNumber)) {
